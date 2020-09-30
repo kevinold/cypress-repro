@@ -6,9 +6,11 @@ describe('Checkbox', () => {
   })
   it('should have default value', () => {
     cy.get('ion-checkbox').find("input[type=hidden]").invoke('val').should("be.empty")
+    cy.get('ion-checkbox').should("have.attr", "aria-checked", 'false')
 
     cy.get('ion-checkbox').find('button').click();
 
     cy.get('ion-checkbox').find("input[type=hidden]").invoke('val').should("eq", "on")
+    cy.get('ion-checkbox').should("have.attr", "aria-checked", 'true')
   })
 })
